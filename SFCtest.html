@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="app">
+    <my-component></my-component>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader"></script>
+  <script src="https://cdn.jsdelivr.net/npm/less"></script>
+  <script src="./index.js"></script>
+  <script>
+    (async () => {
+      const MyComponent = await loadVue('./components/myComponent.vue');
+      const app = Vue.createApp({
+        components: {
+          MyComponent
+        }
+      });
+      app.mount('#app');
+    })();
+  </script>
+</body>
+
+</html>
