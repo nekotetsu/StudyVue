@@ -13,6 +13,7 @@ Vueを使用するにはVue.jsを取り込む必要がありますが、今回�
 https://unpkg.com/vue@next
 
 Vueの挙動を知るための最初のサンプルとしてやってみたのが下記のカウントアップ。詳細はこれから勉強。
+`Counter`をインスタンス化してDOM要素である`#counter`にマウント、`#counter`内の`Counter: {{ counter }}`とJS内でカウントアップしている変数`counter`とを関連付けている様子。
 
 ~~~html:index.html
 <!DOCTYPE html>
@@ -48,4 +49,25 @@ Vueの挙動を知るための最初のサンプルとしてやってみたの�
 </body>
 
 </html>
+~~~
+
+## 要素の属性のバインド
+下記のように`v-bind`を使用することで、要素の属性をリアクティブに変更することが可能。この例では`span`で囲われた要素のtitleの中身を`message`でバインドしている。
+~~~html:index.html
+<div id="bind-attribute">
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds to see my dynamically bound
+    title!
+  </span>
+</div>
+<script>
+  const AttributeBinding = {
+    data() {
+      return {
+        message: "You loaded this page on " + new Date().toLocaleDateString()
+      }
+    }
+  }
+  Vue.createApp(AttributeBinding).mount("#bind-attribute")
+</script>
 ~~~
